@@ -1,0 +1,141 @@
+[gd_scene load_steps=16 format=3 uid="uid://box4o30ymerdf"]
+
+[ext_resource type="Script" path="res://assets/scripts/level_arcade.gd" id="1_q4wik"]
+[ext_resource type="PackedScene" uid="uid://d3k3hea1d2o3r" path="res://scenes/enemy.tscn" id="2_w5t0j"]
+[ext_resource type="PackedScene" uid="uid://s7ixhm0v8epx" path="res://scenes/gui.tscn" id="3_v8hoa"]
+[ext_resource type="Texture2D" uid="uid://pecsrarq5pnm" path="res://assets/images/Clouds/Clouds 8/1.png" id="4_410yd"]
+[ext_resource type="Texture2D" uid="uid://bsr57ry0nm0mj" path="res://assets/images/Clouds/Clouds 8/6.png" id="5_rcp3c"]
+[ext_resource type="Texture2D" uid="uid://cx30u6gw1m61d" path="res://assets/images/Clouds/Clouds 8/2.png" id="6_x5xbl"]
+[ext_resource type="Texture2D" uid="uid://c5k25bsl6u7j2" path="res://assets/images/Clouds/Clouds 8/3.png" id="7_fdo0n"]
+[ext_resource type="Texture2D" uid="uid://dd8fg7sd2m4gj" path="res://assets/images/Clouds/Clouds 8/4.png" id="8_5sfmp"]
+[ext_resource type="Texture2D" uid="uid://dk8ii2nvwh7o4" path="res://assets/images/Clouds/Clouds 8/5.png" id="9_5cmlg"]
+[ext_resource type="PackedScene" uid="uid://b3apr5xhtqnme" path="res://scenes/player.tscn" id="10_sc8wg"]
+[ext_resource type="AudioStream" uid="uid://crnw5rdc2v2vb" path="res://assets/sounds/bg.mp3" id="11_0xc8d"]
+[ext_resource type="Script" path="res://assets/scripts/GameManager_arcade.gd" id="12_bshen"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="13_qp8ef"]
+[ext_resource type="Script" path="res://assets/scripts/PauseNode.gd" id="14_0mwkp"]
+
+[sub_resource type="Curve2D" id="Curve2D_l4c1y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1304, 104, 0, 0, 0, 0, 1360, 96, 0, 0, 0, 0, 1368, 560, 0, 0, 0, 0, 1296, 552, 0, 0, 0, 0, 1304, 104)
+}
+point_count = 5
+
+[node name="level" type="Node2D" groups=["Level"]]
+script = ExtResource("1_q4wik")
+enemy = ExtResource("2_w5t0j")
+
+[node name="GUI" parent="." instance=ExtResource("3_v8hoa")]
+
+[node name="background" type="Node" parent="."]
+
+[node name="Back" type="ParallaxBackground" parent="background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background/Back"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/Back/ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_410yd")
+centered = false
+
+[node name="stars" type="ParallaxBackground" parent="background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background/stars"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/stars/ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_rcp3c")
+centered = false
+
+[node name="clouds1" type="ParallaxBackground" parent="background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background/clouds1"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/clouds1/ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_x5xbl")
+centered = false
+
+[node name="clouds2" type="ParallaxBackground" parent="background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background/clouds2"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/clouds2/ParallaxLayer"]
+scale = Vector2(1.99826, 2.00309)
+texture = ExtResource("7_fdo0n")
+centered = false
+
+[node name="clouds3" type="ParallaxBackground" parent="background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background/clouds3"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/clouds3/ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("8_5sfmp")
+centered = false
+
+[node name="clouds4" type="ParallaxBackground" parent="background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="background/clouds4"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="background/clouds4/ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("9_5cmlg")
+centered = false
+
+[node name="player" parent="." instance=ExtResource("10_sc8wg")]
+position = Vector2(160, 320)
+
+[node name="PathSpawn" type="Path2D" parent="."]
+curve = SubResource("Curve2D_l4c1y")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathSpawn"]
+position = Vector2(1304, 104)
+rotation = -0.141897
+
+[node name="control" type="Node" parent="."]
+
+[node name="TiempoSpawn" type="Timer" parent="control"]
+wait_time = 3.0
+autostart = true
+
+[node name="trackBG" type="AudioStreamPlayer2D" parent="control"]
+stream = ExtResource("11_0xc8d")
+volume_db = -3.8
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("12_bshen")
+
+[node name="PausedGUI" type="CanvasLayer" parent="."]
+
+[node name="PauseLabel" type="Label" parent="PausedGUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -11.5
+offset_right = 56.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.898039, 0.0588235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("13_qp8ef")
+theme_override_font_sizes/font_size = 42
+text = "GAME PAUSED"
+
+[node name="PauseNode" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("14_0mwkp")
+
+[connection signal="timeout" from="control/TiempoSpawn" to="." method="_on_tiempo_spawn_timeout"]

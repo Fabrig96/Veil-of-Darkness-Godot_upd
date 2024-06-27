@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://hb0cy5fyytnr"]
+
+[ext_resource type="Script" path="res://assets/scripts/shieldSpell.gd" id="1_oy6tc"]
+[ext_resource type="Texture2D" uid="uid://ckt6bn1dwl5ag" path="res://assets/images/effects/spr_shield.png" id="2_gs3x0"]
+[ext_resource type="AudioStream" uid="uid://wjs42chwwxby" path="res://assets/sounds/misilShieldImpact.mp3" id="3_l1usp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vm6oa"]
+radius = 88.0
+
+[node name="shieldSpell" type="Area2D"]
+script = ExtResource("1_oy6tc")
+
+[node name="shield" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_gs3x0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vm6oa")
+
+[node name="ImpactMisilShield" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l1usp")
+volume_db = 2.5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

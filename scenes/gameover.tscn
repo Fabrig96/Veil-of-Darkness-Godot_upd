@@ -1,0 +1,196 @@
+[gd_scene load_steps=20 format=3 uid="uid://bd3qb8vf1y5il"]
+
+[ext_resource type="Script" path="res://assets/scripts/gameover.gd" id="1_wv2c3"]
+[ext_resource type="Texture2D" uid="uid://cvysi3mppy2yn" path="res://assets/images/gui/menu.jpeg" id="2_eixwc"]
+[ext_resource type="Theme" uid="uid://cvt6ayssaumua" path="res://assets/images/gui/tema.tres" id="3_nsjfh"]
+[ext_resource type="FontFile" uid="uid://kjtca6qnb8k6" path="res://assets/images/gui/Ancient Medium.ttf" id="4_j0211"]
+[ext_resource type="AudioStream" uid="uid://cto7mjnarpjf7" path="res://assets/sounds/button.mp3" id="5_re6ip"]
+[ext_resource type="AudioStream" uid="uid://dyb1bmcxhlw7l" path="res://assets/sounds/GameOver.mp3" id="6_76b5a"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="7_4r1rb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd1kp"]
+font_size = 120
+font_color = Color(0.752941, 0.164706, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0.811765, 0, 1)
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.278431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gdye"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_jx78d"]
+button_index = 6
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_0e6lm"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_6128r"]
+events = [SubResource("InputEventJoypadButton_jx78d"), SubResource("InputEventKey_0e6lm")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lf3yr"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_ag2br"]
+button_index = 2
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_5sq5v"]
+events = [SubResource("InputEventJoypadButton_ag2br")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7pjqv"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_qv6k4"]
+button_index = 1
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_55ptg"]
+events = [SubResource("InputEventJoypadButton_qv6k4")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qu7i"]
+font = ExtResource("4_j0211")
+font_size = 80
+font_color = Color(0.968627, 0.0666667, 0.137255, 0.87451)
+
+[node name="gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wv2c3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0588235, 0.34902, 0.498039, 0.929412)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -60.0
+offset_right = 1148.0
+offset_bottom = 964.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eixwc")
+
+[node name="GameOverTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 229.0
+offset_top = 55.0
+offset_right = 947.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme = ExtResource("3_nsjfh")
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_dd1kp")
+
+[node name="Iniciar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 373.0
+offset_right = 750.0
+offset_bottom = 494.0
+theme = ExtResource("3_nsjfh")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.976471, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.811765, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.882353, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4gdye")
+shortcut = SubResource("Shortcut_6128r")
+shortcut_in_tooltip = false
+text = "Reiniciar
+"
+flat = true
+
+[node name="Tutorial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 490.0
+offset_right = 536.0
+offset_bottom = 594.0
+theme = ExtResource("3_nsjfh")
+theme_override_colors/font_color = Color(0.184314, 0.905882, 0.729412, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lf3yr")
+shortcut = SubResource("Shortcut_5sq5v")
+shortcut_in_tooltip = false
+text = "Tutorial
+"
+flat = true
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 490.0
+offset_right = 920.0
+offset_bottom = 594.0
+theme = ExtResource("3_nsjfh")
+theme_override_colors/font_color = Color(0.184314, 0.905882, 0.729412, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7pjqv")
+shortcut = SubResource("Shortcut_55ptg")
+shortcut_in_tooltip = false
+text = "Salir
+"
+flat = true
+
+[node name="buttonsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_re6ip")
+volume_db = 1.246
+autoplay = true
+
+[node name="MotivoGameOver" type="Label" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 176.0
+offset_right = 899.0
+offset_bottom = 266.0
+text = "Te han destruido!"
+label_settings = SubResource("LabelSettings_3qu7i")
+horizontal_alignment = 1
+
+[node name="AudioGameOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_76b5a")
+volume_db = 1.8
+
+[node name="Record" type="Label" parent="."]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 328.0
+offset_right = 614.0
+offset_bottom = 372.0
+theme_override_colors/font_color = Color(0.847059, 0.988235, 0, 1)
+theme_override_fonts/font = ExtResource("7_4r1rb")
+theme_override_font_sizes/font_size = 32
+text = "Puntaje record: "
+horizontal_alignment = 1
+
+[node name="Puntuacion" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 449.0
+offset_top = 259.0
+offset_right = 678.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.847059, 0.988235, 0, 1)
+theme_override_fonts/font = ExtResource("7_4r1rb")
+theme_override_font_sizes/font_size = 32
+text = "Puntaje:"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]

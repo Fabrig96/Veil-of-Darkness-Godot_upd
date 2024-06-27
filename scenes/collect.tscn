@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3j464508xio4"]
+
+[ext_resource type="Script" path="res://assets/scripts/collect-angle.gd" id="1_meccl"]
+[ext_resource type="Texture2D" uid="uid://dty6rbc1dwqk5" path="res://assets/images/effects/collect.png" id="2_htmic"]
+[ext_resource type="AudioStream" uid="uid://bnni6070pvtc0" path="res://assets/sounds/collect.mp3" id="3_s7j7m"]
+[ext_resource type="AudioStream" uid="uid://dbml8b2nirw0j" path="res://assets/sounds/ultimateReadyv2.mp3" id="4_qvfoc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bo6li"]
+radius = 24.0
+
+[node name="collect" type="Area2D"]
+script = ExtResource("1_meccl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_htmic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bo6li")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s7j7m")
+volume_db = 1.8
+
+[node name="UltimateReady" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qvfoc")
+volume_db = 8.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

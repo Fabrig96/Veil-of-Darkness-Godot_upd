@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://crg13emxva3p3"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy_n3.gd" id="1_xfgxj"]
+[ext_resource type="PackedScene" uid="uid://cl6dp3j4tapgy" path="res://scenes/misil.tscn" id="2_ahbmx"]
+[ext_resource type="Texture2D" uid="uid://digwqko6sj5ho" path="res://assets/images/effects/explo/explo1.png" id="3_b1go3"]
+[ext_resource type="Texture2D" uid="uid://bpqvltkbdo2bl" path="res://assets/images/effects/explo/explo2.png" id="4_dq7yu"]
+[ext_resource type="Texture2D" uid="uid://cdxydomjnfety" path="res://assets/images/effects/explo/explo3.png" id="5_05rp1"]
+[ext_resource type="Texture2D" uid="uid://c3mc3tbb2ywve" path="res://assets/images/effects/explo/explo4.png" id="6_bns64"]
+[ext_resource type="Texture2D" uid="uid://cutd72tifypej" path="res://assets/images/effects/explo/explo5.png" id="7_lub5w"]
+[ext_resource type="Texture2D" uid="uid://ckj2my3if3jql" path="res://assets/images/effects/explo/explo6.png" id="8_b1ums"]
+[ext_resource type="Texture2D" uid="uid://jfex2l6dllf1" path="res://assets/images/effects/explo/explo7.png" id="9_hxb2i"]
+[ext_resource type="Texture2D" uid="uid://bejj581sq60fd" path="res://assets/images/effects/explo/explo8.png" id="10_qpmlv"]
+[ext_resource type="AudioStream" uid="uid://dyntm5fqb3eui" path="res://assets/sounds/explosion sfx.mp3" id="11_3dvkg"]
+[ext_resource type="AudioStream" uid="uid://cindqirkhfban" path="res://assets/sounds/death.mp3" id="12_tj2po"]
+[ext_resource type="AudioStream" uid="uid://dasria4h7cm5c" path="res://assets/sounds/Missile launch Sound effect.mp3" id="13_ylgtq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg711"]
+size = Vector2(227.555, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gaoy8"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b1go3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dq7yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_05rp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bns64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lub5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b1ums")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hxb2i")
+}, {
+"duration": 0.9,
+"texture": ExtResource("10_qpmlv")
+}, {
+"duration": 0.5,
+"texture": null
+}],
+"loop": false,
+"name": &"explo",
+"speed": 16.0
+}]
+
+[node name="enemy" type="Node2D"]
+script = ExtResource("1_xfgxj")
+misil = ExtResource("2_ahbmx")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.45, 0.45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.60008, 4)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_xg711")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D"]
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.17, 0.17)
+sprite_frames = SubResource("SpriteFrames_gaoy8")
+animation = &"explo"
+
+[node name="AudioExplosion" type="AudioStreamPlayer2D" parent="Explosion"]
+stream = ExtResource("11_3dvkg")
+volume_db = 1.2
+pitch_scale = 1.2
+
+[node name="AudioDetroyPlayer" type="AudioStreamPlayer2D" parent="Explosion"]
+stream = ExtResource("12_tj2po")
+volume_db = 8.6
+
+[node name="SpawnMisil" type="Marker2D" parent="."]
+position = Vector2(-90, 10)
+
+[node name="TiempoDisparo" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="AudioShootMisil" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_ylgtq")
+
+[node name="cambioRitmo" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="Area2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="finished" from="Explosion/AudioExplosion" to="." method="_on_audio_explosion_finished"]
+[connection signal="timeout" from="TiempoDisparo" to="." method="_on_tiempo_disparo_timeout"]
+[connection signal="timeout" from="cambioRitmo" to="." method="_on_cambio_ritmo_timeout"]

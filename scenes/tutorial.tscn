@@ -1,0 +1,177 @@
+[gd_scene load_steps=17 format=3 uid="uid://dta4veo1kwcnc"]
+
+[ext_resource type="Script" path="res://assets/scripts/tutorial.gd" id="1_n745s"]
+[ext_resource type="Texture2D" uid="uid://cvysi3mppy2yn" path="res://assets/images/gui/menu.jpeg" id="2_qu6wy"]
+[ext_resource type="Theme" uid="uid://cvt6ayssaumua" path="res://assets/images/gui/tema.tres" id="3_clfef"]
+[ext_resource type="FontFile" uid="uid://kjtca6qnb8k6" path="res://assets/images/gui/Ancient Medium.ttf" id="4_abj0r"]
+[ext_resource type="AudioStream" uid="uid://cto7mjnarpjf7" path="res://assets/sounds/button.mp3" id="5_d762a"]
+[ext_resource type="AudioStream" uid="uid://djnwc6hilhbuu" path="res://assets/sounds/MainMenu.mp3" id="8_71kuv"]
+[ext_resource type="FontFile" uid="uid://br01tedh83aax" path="res://assets/images/gui/Epistle-Regular.ttf" id="8_fiig5"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="9_72pke"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd1kp"]
+font = ExtResource("4_abj0r")
+font_size = 80
+font_color = Color(0.752941, 0.164706, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0.811765, 0, 1)
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.278431)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqg8o"]
+bg_color = Color(0.0352941, 0, 0.129412, 0.360784)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy6wf"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_7jhii"]
+button_index = 2
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_nsiu1"]
+events = [SubResource("InputEventJoypadButton_7jhii")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_oday5"]
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_xdi46"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_jdnhq"]
+events = [SubResource("InputEventJoypadButton_oday5"), SubResource("InputEventKey_xdi46")]
+
+[node name="tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n745s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0588235, 0.34902, 0.498039, 0.929412)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -60.0
+offset_right = 1148.0
+offset_bottom = 964.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qu6wy")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = -17.0
+offset_right = 716.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme = ExtResource("3_clfef")
+text = "Tutorial"
+label_settings = SubResource("LabelSettings_dd1kp")
+
+[node name="buttonsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_d762a")
+volume_db = 1.246
+
+[node name="mainMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_71kuv")
+volume_db = 3.0
+
+[node name="ItemList" type="ItemList" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 104.0
+offset_right = 1143.0
+offset_bottom = 408.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lqg8o")
+
+[node name="Label2" type="Label" parent="ItemList"]
+visible = false
+layout_mode = 1
+offset_left = 5.0
+offset_right = 1260.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 23
+text = "En Veil of Darkness deberas controlar a Atramentus, un mago oscuro, el cual debe destruir a todo 
+enemigo por los cielos usando podersos conjuros.
+El juego tiene diferentes niveles donde en cada uno aumenta su dificultad. Por cada nivel debes 
+alcanzar un puntaje (target). Por cada enemigo destruido sumarás 100 puntos hasta llegar al puntaje 
+objetivo. Si un ataque enemigo te alcanza o si impactas contra una areonave, automáticamente serás 
+destruido. Por cada enemigo derrotado se creará una orbe de poder verde que debes tratar de 
+capturar y sumarás un 25% de carga para el conjuro ultimate. Una vez llegada a la carga al 100% 
+podrás lanzar el ultimate y derrotar a todos los enemigos masivamente sin importar tu posición.
+"
+
+[node name="vercontroles" type="Button" parent="."]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 570.0
+offset_right = 481.0
+offset_bottom = 624.0
+theme_override_colors/font_color = Color(0, 0.952941, 0, 1)
+theme_override_fonts/font = ExtResource("9_72pke")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fy6wf")
+shortcut = SubResource("Shortcut_nsiu1")
+shortcut_in_tooltip = false
+text = "VER CONTROLES"
+flat = true
+
+[node name="atras" type="Button" parent="."]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 555.0
+offset_right = 897.0
+offset_bottom = 624.0
+theme_override_colors/font_color = Color(0.968627, 0.14902, 0, 1)
+theme_override_fonts/font = ExtResource("9_72pke")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fy6wf")
+shortcut = SubResource("Shortcut_jdnhq")
+shortcut_in_tooltip = false
+text = "Atrás
+"
+flat = true
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 68.0
+offset_right = 1161.0
+offset_bottom = 528.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_fiig5")
+theme_override_font_sizes/font_size = 18
+text = "En este emocionante juego, tomarás el control de Atramentus, un poderoso mago oscuro que surca los cielos. Tu misión es destruir a todos los 
+enemigos que se crucen en tu camino utilizando tus hechizos más poderosos.
+
+El juego consta de varios niveles, cada uno con su propio aumento de dificultad. En cada nivel, tendrás que alcanzar un puntaje objetivo. Cada 
+enemigo que destruyas te otorgará 100 puntos, acercándote más a tu objetivo. Sin embargo, ¡cuidado! Si un ataque enemigo te golpea o chocas 
+contra una nave, serás destruido al instante. Deberás completar todos los niveles para completar el juego exitosamente!
+
+Por cada enemigo que derrotes, se generará una orbe de poder verde. ¡Atrápala para cargar el devastador Conjuro Definitivo de Atramentus! 
+Cada orbe te otorgará un 25% de carga, y cuando alcances el 100%, podrás lanzar el Conjuro Definitivo y eliminar a todos los enemigos de una 
+vez, sin importar tu posición en la pantalla.
+
+Atramentus también cuenta con un Conjuro Defensivo, que podrás activar al destruir a dos enemigos consecutivamente sin que ninguno escape 
+del campo de batalla. Este conjuro te protegerá durante 5 segundos, pero ten en cuenta que no podrás acumular rachas mientras esté activo.
+
+Además, Atramentus posee el poder del Vuelo Mágico Turbo, que duplica su velocidad de movimiento durante 15 segundos. ¡Úsalo 
+estratégicamente, ya que solo podrás activarlo una vez en cada nivel!
+
+¡Prepárate para enfrentar desafíos épicos y demostrar tu habilidad como mago oscuro en Veil of Darkness!"
+
+[connection signal="pressed" from="vercontroles" to="." method="_on_vercontroles_pressed"]
+[connection signal="pressed" from="atras" to="." method="_on_atras_pressed"]

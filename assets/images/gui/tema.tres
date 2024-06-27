@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cvt6ayssaumua"]
+
+[ext_resource type="FontFile" uid="uid://kjtca6qnb8k6" path="res://assets/images/gui/Ancient Medium.ttf" id="1_x2kol"]
+
+[resource]
+default_font = ExtResource("1_x2kol")
+default_font_size = 120
+/colors/color = Color(0.752941, 0.164706, 0, 1)
+/constants/c = 0
+/font_sizes/c = 120
+/fonts/c = ExtResource("1_x2kol")
+/styles/c = null

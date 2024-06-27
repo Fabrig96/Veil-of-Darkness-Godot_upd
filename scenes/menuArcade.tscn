@@ -1,0 +1,176 @@
+[gd_scene load_steps=18 format=3 uid="uid://cui5h6edidvyo"]
+
+[ext_resource type="Script" path="res://assets/scripts/menuArcade.gd" id="1_whqc4"]
+[ext_resource type="Texture2D" uid="uid://cvysi3mppy2yn" path="res://assets/images/gui/menu.jpeg" id="2_7e8f6"]
+[ext_resource type="Theme" uid="uid://cvt6ayssaumua" path="res://assets/images/gui/tema.tres" id="3_8lrpf"]
+[ext_resource type="FontFile" uid="uid://kjtca6qnb8k6" path="res://assets/images/gui/Ancient Medium.ttf" id="4_lgjox"]
+[ext_resource type="AudioStream" uid="uid://cto7mjnarpjf7" path="res://assets/sounds/button.mp3" id="5_5m8v2"]
+[ext_resource type="AudioStream" uid="uid://djnwc6hilhbuu" path="res://assets/sounds/MainMenu.mp3" id="6_qwxjs"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="7_3rkml"]
+[ext_resource type="FontFile" uid="uid://br01tedh83aax" path="res://assets/images/gui/Epistle-Regular.ttf" id="8_bfy0x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd1kp"]
+font = ExtResource("4_lgjox")
+font_size = 80
+font_color = Color(0.752941, 0.164706, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0.811765, 0, 1)
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.278431)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqg8o"]
+bg_color = Color(0.0352941, 0, 0.129412, 0.360784)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy6wf"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_7jhii"]
+button_index = 6
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_4h1hg"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_nsiu1"]
+events = [SubResource("InputEventJoypadButton_7jhii"), SubResource("InputEventKey_4h1hg")]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_oday5"]
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_xdi46"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_jdnhq"]
+events = [SubResource("InputEventJoypadButton_oday5"), SubResource("InputEventKey_xdi46")]
+
+[node name="menuArcade" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_whqc4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0588235, 0.34902, 0.498039, 0.929412)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -60.0
+offset_right = 1148.0
+offset_bottom = 964.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7e8f6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = -17.0
+offset_right = 716.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme = ExtResource("3_8lrpf")
+text = "Modo Arcade"
+label_settings = SubResource("LabelSettings_dd1kp")
+
+[node name="buttonsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5m8v2")
+volume_db = 1.246
+
+[node name="mainMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qwxjs")
+volume_db = 3.0
+
+[node name="ItemList" type="ItemList" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = 104.0
+offset_right = 1143.0
+offset_bottom = 408.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lqg8o")
+
+[node name="Label2" type="Label" parent="ItemList"]
+visible = false
+layout_mode = 1
+offset_left = 5.0
+offset_right = 1260.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 23
+text = "En Veil of Darkness deberas controlar a Atramentus, un mago oscuro, el cual debe destruir a todo 
+enemigo por los cielos usando podersos conjuros.
+El juego tiene diferentes niveles donde en cada uno aumenta su dificultad. Por cada nivel debes 
+alcanzar un puntaje (target). Por cada enemigo destruido sumarás 100 puntos hasta llegar al puntaje 
+objetivo. Si un ataque enemigo te alcanza o si impactas contra una areonave, automáticamente serás 
+destruido. Por cada enemigo derrotado se creará una orbe de poder verde que debes tratar de 
+capturar y sumarás un 25% de carga para el conjuro ultimate. Una vez llegada a la carga al 100% 
+podrás lanzar el ultimate y derrotar a todos los enemigos masivamente sin importar tu posición.
+"
+
+[node name="iniciarArcade" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 554.0
+offset_right = 721.0
+offset_bottom = 633.0
+theme_override_colors/font_color = Color(0, 0.952941, 0, 1)
+theme_override_fonts/font = ExtResource("7_3rkml")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fy6wf")
+shortcut = SubResource("Shortcut_nsiu1")
+shortcut_in_tooltip = false
+text = "Iniciar "
+flat = true
+
+[node name="atras" type="Button" parent="."]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 571.0
+offset_right = 1193.0
+offset_bottom = 640.0
+theme_override_colors/font_color = Color(0.968627, 0.14902, 0, 1)
+theme_override_fonts/font = ExtResource("7_3rkml")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fy6wf")
+shortcut = SubResource("Shortcut_jdnhq")
+shortcut_in_tooltip = false
+text = "Atrás
+"
+flat = true
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 68.0
+offset_right = 1161.0
+offset_bottom = 496.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_bfy0x")
+theme_override_font_sizes/font_size = 24
+text = "¡Bienvenido al Modo Arcade!
+
+En este modo de juego, no hay límite de tiempo ni una puntuación máxima a alcanzar. Tu objetivo es simple 
+pero desafiante: destruye a todos los enemigos que se crucen en tu camino y acumula puntos sin fin. 
+La partida continuará hasta que Atramentus sea destruido.
+
+En el Modo Arcade, cada enemigo derrotado te otorgará puntos, permitiéndote ver hasta dónde puedes 
+llegar. La emoción de este modo radica en la posibilidad de superar tu propia marca una y otra vez. 
+Al finalizar la partida, se mostrará tu puntuación final junto con la mayor puntuación que hayas logrado 
+históricamente, para que siempre tengas un objetivo a superar.
+
+  ¿Estás listo para enfrentar interminables oleadas de enemigos y demostrar tu habilidad como el mago 
+  oscuro más poderoso? ¡Buena suerte!"
+
+[connection signal="pressed" from="iniciarArcade" to="." method="_on_iniciar_arcade_pressed"]
+[connection signal="pressed" from="atras" to="." method="_on_atras_pressed"]

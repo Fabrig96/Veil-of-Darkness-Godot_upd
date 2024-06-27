@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://s7ixhm0v8epx"]
+
+[ext_resource type="Script" path="res://assets/scripts/gui.gd" id="1_1jfpo"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="1_d64gc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5r3e3"]
+font = ExtResource("1_d64gc")
+font_size = 42
+font_color = Color(0, 0.941176, 0.337255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tanbj"]
+font = ExtResource("1_d64gc")
+font_size = 42
+font_color = Color(0, 0.941176, 0.337255, 1)
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_1jfpo")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 1.0
+offset_right = 666.0
+offset_bottom = 66.0
+text = "LEVEL 
+"
+label_settings = SubResource("LabelSettings_5r3e3")
+horizontal_alignment = 1
+
+[node name="Points" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 584.0
+offset_right = 248.0
+offset_bottom = 649.0
+text = "POINTS: 0"
+label_settings = SubResource("LabelSettings_5r3e3")
+
+[node name="Target" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 886.0
+offset_top = 584.0
+offset_right = 1086.0
+offset_bottom = 649.0
+text = "TARGET: "
+label_settings = SubResource("LabelSettings_5r3e3")
+
+[node name="Ultimate" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 584.0
+offset_right = 780.0
+offset_bottom = 649.0
+text = "ULTIMATE SPELL: 0%"
+label_settings = SubResource("LabelSettings_5r3e3")
+
+[node name="UltimateReady" type="Label" parent="HUD"]
+visible = false
+layout_mode = 0
+offset_left = 441.0
+offset_top = 72.0
+offset_right = 771.0
+offset_bottom = 137.0
+text = "ULTIMATE READY"
+label_settings = SubResource("LabelSettings_5r3e3")
+
+[node name="TiempoFuera" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 229.0
+offset_right = 826.0
+offset_bottom = 294.0
+text = "TIME OUT!"
+label_settings = SubResource("LabelSettings_5r3e3")
+
+[node name="ShieldReady" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 277.0
+offset_right = 784.0
+offset_bottom = 342.0
+text = "Shield Ready!"
+label_settings = SubResource("LabelSettings_5r3e3")
+
+[node name="TurboActivated" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 848.0
+offset_top = -4.0
+offset_right = 1178.0
+offset_bottom = 61.0
+text = "Turbo Activated!"
+label_settings = SubResource("LabelSettings_5r3e3")
+
+[node name="LabelTiempo" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -4.0
+offset_right = 182.0
+offset_bottom = 53.0
+text = "Time Left:"
+label_settings = SubResource("LabelSettings_tanbj")

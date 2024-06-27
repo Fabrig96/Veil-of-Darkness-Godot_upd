@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://pj3w3u6fphrs"]
+
+[ext_resource type="Texture2D" uid="uid://cnrsaao5uwwyc" path="res://assets/images/effects/particles1.png" id="1_ndjoy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_liu2n"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_4a6p0"]
+_data = [Vector2(0, 0.351648), 0.0, 0.0, 0, 0, Vector2(0.634831, 0.142857), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_liu2n")
+amount = 6
+speed_scale = 1.64
+texture = ExtResource("1_ndjoy")
+spread = 145.24
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = 87.27
+angular_velocity_max = 87.27
+linear_accel_min = 5.0
+linear_accel_max = 25.2
+scale_amount_curve = SubResource("Curve_4a6p0")
+color = Color(0.0352941, 0.0862745, 0.211765, 1)
+anim_speed_min = 1.0
+anim_speed_max = 1.0

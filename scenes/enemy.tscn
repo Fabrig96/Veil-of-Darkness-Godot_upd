@@ -1,0 +1,101 @@
+[gd_scene load_steps=16 format=3 uid="uid://d3k3hea1d2o3r"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy.gd" id="1_oaumc"]
+[ext_resource type="PackedScene" uid="uid://cl6dp3j4tapgy" path="res://scenes/misil.tscn" id="2_axy1i"]
+[ext_resource type="Texture2D" uid="uid://digwqko6sj5ho" path="res://assets/images/effects/explo/explo1.png" id="3_yv8q6"]
+[ext_resource type="Texture2D" uid="uid://bpqvltkbdo2bl" path="res://assets/images/effects/explo/explo2.png" id="4_sagqr"]
+[ext_resource type="Texture2D" uid="uid://cdxydomjnfety" path="res://assets/images/effects/explo/explo3.png" id="5_rgii4"]
+[ext_resource type="Texture2D" uid="uid://c3mc3tbb2ywve" path="res://assets/images/effects/explo/explo4.png" id="6_rng0x"]
+[ext_resource type="Texture2D" uid="uid://cutd72tifypej" path="res://assets/images/effects/explo/explo5.png" id="7_55lv8"]
+[ext_resource type="Texture2D" uid="uid://ckj2my3if3jql" path="res://assets/images/effects/explo/explo6.png" id="8_k5ysi"]
+[ext_resource type="Texture2D" uid="uid://jfex2l6dllf1" path="res://assets/images/effects/explo/explo7.png" id="9_tv305"]
+[ext_resource type="Texture2D" uid="uid://bejj581sq60fd" path="res://assets/images/effects/explo/explo8.png" id="10_08fl1"]
+[ext_resource type="AudioStream" uid="uid://dyntm5fqb3eui" path="res://assets/sounds/explosion sfx.mp3" id="11_fkext"]
+[ext_resource type="AudioStream" uid="uid://cindqirkhfban" path="res://assets/sounds/death.mp3" id="12_cnf04"]
+[ext_resource type="AudioStream" uid="uid://dasria4h7cm5c" path="res://assets/sounds/Missile launch Sound effect.mp3" id="14_xbsti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg711"]
+size = Vector2(224, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gaoy8"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yv8q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sagqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rgii4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rng0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_55lv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k5ysi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tv305")
+}, {
+"duration": 0.9,
+"texture": ExtResource("10_08fl1")
+}, {
+"duration": 0.5,
+"texture": null
+}],
+"loop": false,
+"name": &"explo",
+"speed": 16.0
+}]
+
+[node name="enemy" type="Node2D"]
+script = ExtResource("1_oaumc")
+misil = ExtResource("2_axy1i")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.52, 0.52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_xg711")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D"]
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.17, 0.17)
+sprite_frames = SubResource("SpriteFrames_gaoy8")
+animation = &"explo"
+
+[node name="AudioExplosion" type="AudioStreamPlayer2D" parent="Explosion"]
+stream = ExtResource("11_fkext")
+volume_db = 1.2
+pitch_scale = 1.2
+
+[node name="AudioDetroyPlayer" type="AudioStreamPlayer2D" parent="Explosion"]
+stream = ExtResource("12_cnf04")
+volume_db = 8.6
+
+[node name="SpawnMisil" type="Marker2D" parent="."]
+position = Vector2(-120, 20)
+
+[node name="TiempoDisparo" type="Timer" parent="."]
+wait_time = 1.4
+autostart = true
+
+[node name="AudioShootMisil" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_xbsti")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="Area2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="finished" from="Explosion/AudioExplosion" to="." method="_on_audio_explosion_finished"]
+[connection signal="timeout" from="TiempoDisparo" to="." method="_on_tiempo_disparo_timeout"]

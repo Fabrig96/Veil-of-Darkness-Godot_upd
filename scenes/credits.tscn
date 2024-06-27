@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://drv7s7kchjkk7"]
+
+[ext_resource type="Texture2D" uid="uid://b1fw8fdlsc845" path="res://assets/images/gui/credits.jpg" id="1_8w36v"]
+[ext_resource type="Script" path="res://assets/scripts/credits.gd" id="1_nka3e"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="2_1m6db"]
+[ext_resource type="FontFile" uid="uid://br01tedh83aax" path="res://assets/images/gui/Epistle-Regular.ttf" id="2_i5d87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w0sj"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_a6rwj"]
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_f20ma"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_eg6n6"]
+events = [SubResource("InputEventJoypadButton_a6rwj"), SubResource("InputEventKey_f20ma")]
+
+[node name="credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nka3e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -40.0
+offset_right = 1920.0
+offset_bottom = 1160.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_8w36v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.0
+offset_top = -74.0
+offset_right = 406.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 22
+theme_override_fonts/font = ExtResource("2_i5d87")
+theme_override_font_sizes/font_size = 48
+text = "Veil of Darkness"
+
+[node name="dev" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 22
+theme_override_fonts/font = ExtResource("2_i5d87")
+theme_override_font_sizes/font_size = 32
+text = "Desarrollado por Fabrizio Aguilar"
+
+[node name="copyright" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 22
+theme_override_fonts/font = ExtResource("2_i5d87")
+theme_override_font_sizes/font_size = 32
+text = "© 2024 Fabrizio Aguilar. Todos los derechos reservados."
+
+[node name="atras" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1007.0
+offset_top = 566.0
+offset_right = 1102.0
+offset_bottom = 623.0
+theme_override_colors/font_color = Color(0.984314, 0.0705882, 0, 1)
+theme_override_fonts/font = ExtResource("2_1m6db")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4w0sj")
+shortcut = SubResource("Shortcut_eg6n6")
+shortcut_in_tooltip = false
+text = "Atrás"
+flat = true
+
+[connection signal="pressed" from="atras" to="." method="_on_atras_pressed"]

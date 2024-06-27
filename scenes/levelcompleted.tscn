@@ -1,0 +1,184 @@
+[gd_scene load_steps=20 format=3 uid="uid://w4p5igc88oyc"]
+
+[ext_resource type="Script" path="res://assets/scripts/levelcompleted.gd" id="1_jiv5k"]
+[ext_resource type="Texture2D" uid="uid://tdb4gdp36e" path="res://assets/images/gui/levelcompleted.jpeg" id="2_wker1"]
+[ext_resource type="Theme" uid="uid://cvt6ayssaumua" path="res://assets/images/gui/tema.tres" id="3_pyjbt"]
+[ext_resource type="FontFile" uid="uid://kjtca6qnb8k6" path="res://assets/images/gui/Ancient Medium.ttf" id="4_7xatp"]
+[ext_resource type="AudioStream" uid="uid://cto7mjnarpjf7" path="res://assets/sounds/button.mp3" id="4_kmtg8"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="5_sskda"]
+[ext_resource type="AudioStream" uid="uid://d260jppqag6jf" path="res://assets/sounds/win.mp3" id="6_ww7h4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd1kp"]
+font_size = 120
+font_color = Color(0.752941, 0.164706, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0.811765, 0, 1)
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.278431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g76co"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_dfhgx"]
+button_index = 6
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_l5pwd"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_61tqe"]
+events = [SubResource("InputEventJoypadButton_dfhgx"), SubResource("InputEventKey_l5pwd")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pi06w"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_jav0f"]
+button_index = 2
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_k6aii"]
+events = [SubResource("InputEventJoypadButton_jav0f")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erfdh"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_t2c16"]
+button_index = 1
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_hv5bt"]
+events = [SubResource("InputEventJoypadButton_t2c16")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qu7i"]
+font = ExtResource("5_sskda")
+font_size = 80
+font_color = Color(0.968627, 0.0666667, 0.137255, 0.87451)
+
+[node name="levelcompleted" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jiv5k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.498039, 0.737255, 0.541176, 0.886275)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -132.0
+offset_right = 1132.0
+offset_bottom = 892.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wker1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 53.0
+offset_top = 104.0
+offset_right = 1093.0
+offset_bottom = 239.0
+grow_horizontal = 2
+theme = ExtResource("3_pyjbt")
+text = "LEVEL COMPLETED"
+label_settings = SubResource("LabelSettings_dd1kp")
+
+[node name="Iniciar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 330.0
+offset_right = 859.0
+offset_bottom = 451.0
+theme = ExtResource("3_pyjbt")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.976471, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.811765, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.882353, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g76co")
+shortcut = SubResource("Shortcut_61tqe")
+shortcut_in_tooltip = false
+text = "Siguiente nivel"
+flat = true
+
+[node name="reiniciarlevel" type="Button" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 412.0
+offset_right = 858.0
+offset_bottom = 533.0
+theme = ExtResource("3_pyjbt")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.976471, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.811765, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.882353, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7xatp")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g76co")
+shortcut = SubResource("Shortcut_61tqe")
+shortcut_in_tooltip = false
+text = "Reiniciar nivel"
+flat = true
+
+[node name="Tutorial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 488.0
+offset_right = 536.0
+offset_bottom = 592.0
+theme = ExtResource("3_pyjbt")
+theme_override_colors/font_color = Color(0.184314, 0.905882, 0.729412, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pi06w")
+shortcut = SubResource("Shortcut_k6aii")
+shortcut_in_tooltip = false
+text = "Tutorial
+"
+flat = true
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 488.0
+offset_right = 920.0
+offset_bottom = 592.0
+theme = ExtResource("3_pyjbt")
+theme_override_colors/font_color = Color(0.184314, 0.905882, 0.729412, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_erfdh")
+shortcut = SubResource("Shortcut_hv5bt")
+shortcut_in_tooltip = false
+text = "Salir
+"
+flat = true
+
+[node name="buttonsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kmtg8")
+volume_db = 1.246
+autoplay = true
+
+[node name="winLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 264.0
+offset_right = 920.0
+offset_bottom = 354.0
+text = "YOU WIN"
+label_settings = SubResource("LabelSettings_3qu7i")
+
+[node name="AudioLevelWin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ww7h4")
+volume_db = 1.8
+
+[connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="reiniciarlevel" to="." method="_on_reiniciarlevel_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]

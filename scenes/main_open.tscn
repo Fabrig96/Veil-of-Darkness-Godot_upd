@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dshefij1jk0xx"]
+
+[ext_resource type="VideoStream" path="res://assets/video/VeilOfDarknessINTROFINAL.ogv" id="1_jyed5"]
+[ext_resource type="Script" path="res://assets/scripts/main_open.gd" id="1_mf4kc"]
+
+[node name="Opening" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mf4kc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.780392)
+
+[node name="VideoOpen" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -72.0
+offset_right = 89.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_jyed5")
+
+[node name="InitVideo" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[node name="InitgameTimer" type="Timer" parent="."]
+wait_time = 6.5
+
+[connection signal="timeout" from="InitVideo" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="InitgameTimer" to="." method="_on_initgame_timer_timeout"]

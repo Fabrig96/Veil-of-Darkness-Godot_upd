@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://cs2yu2pef442n"]
+
+[ext_resource type="Script" path="res://assets/scripts/controles.gd" id="1_keuy0"]
+[ext_resource type="Texture2D" uid="uid://cvysi3mppy2yn" path="res://assets/images/gui/menu.jpeg" id="2_l6l8r"]
+[ext_resource type="Theme" uid="uid://cvt6ayssaumua" path="res://assets/images/gui/tema.tres" id="3_2ltom"]
+[ext_resource type="FontFile" uid="uid://kjtca6qnb8k6" path="res://assets/images/gui/Ancient Medium.ttf" id="4_qe631"]
+[ext_resource type="AudioStream" uid="uid://cto7mjnarpjf7" path="res://assets/sounds/button.mp3" id="5_v1q0d"]
+[ext_resource type="Texture2D" uid="uid://dl0w3bw85710q" path="res://assets/images/gui/xboxControl.png" id="7_infew"]
+[ext_resource type="Texture2D" uid="uid://dvlrkca8yknnr" path="res://assets/images/gui/controlKeyboard.png" id="8_chw6p"]
+[ext_resource type="AudioStream" uid="uid://djnwc6hilhbuu" path="res://assets/sounds/MainMenu.mp3" id="8_q3om7"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="9_we6l3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd1kp"]
+font = ExtResource("4_qe631")
+font_size = 80
+font_color = Color(0.752941, 0.164706, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0.811765, 0, 1)
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.278431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5kmp"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_t6jkd"]
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_iimd4"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_uac8x"]
+events = [SubResource("InputEventJoypadButton_t6jkd"), SubResource("InputEventKey_iimd4")]
+
+[node name="controles" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_keuy0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0588235, 0.34902, 0.498039, 0.929412)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -60.0
+offset_right = 1148.0
+offset_bottom = 964.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l6l8r")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 20.0
+offset_top = -8.0
+offset_right = 738.0
+offset_bottom = 127.0
+grow_horizontal = 2
+theme = ExtResource("3_2ltom")
+text = "Controls
+"
+label_settings = SubResource("LabelSettings_dd1kp")
+
+[node name="buttonsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_v1q0d")
+volume_db = 1.246
+
+[node name="mainMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_q3om7")
+volume_db = 3.0
+
+[node name="xbox" type="TextureRect" parent="."]
+self_modulate = Color(0.32549, 0.917647, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 136.0
+offset_right = 1088.0
+offset_bottom = 1047.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_infew")
+
+[node name="keyboard" type="TextureRect" parent="."]
+self_modulate = Color(0.32549, 0.917647, 1, 1)
+layout_mode = 0
+offset_left = 594.0
+offset_top = 136.0
+offset_right = 1501.0
+offset_bottom = 909.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_chw6p")
+
+[node name="atras" type="Button" parent="."]
+layout_mode = 0
+offset_left = 944.0
+offset_top = 24.0
+offset_right = 1049.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0.976471, 0.152941, 0, 1)
+theme_override_fonts/font = ExtResource("9_we6l3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n5kmp")
+shortcut = SubResource("Shortcut_uac8x")
+shortcut_in_tooltip = false
+text = "Atrás"
+flat = true
+
+[connection signal="pressed" from="atras" to="." method="_on_atras_pressed"]

@@ -1,0 +1,314 @@
+[gd_scene load_steps=31 format=3 uid="uid://dfu8h3ys0nlog"]
+
+[ext_resource type="Script" path="res://assets/scripts/menu.gd" id="1_0n5st"]
+[ext_resource type="Texture2D" uid="uid://cvysi3mppy2yn" path="res://assets/images/gui/menu.jpeg" id="1_18v5g"]
+[ext_resource type="FontFile" uid="uid://kjtca6qnb8k6" path="res://assets/images/gui/Ancient Medium.ttf" id="2_l4m80"]
+[ext_resource type="Theme" uid="uid://cvt6ayssaumua" path="res://assets/images/gui/tema.tres" id="2_wbm45"]
+[ext_resource type="AudioStream" uid="uid://cto7mjnarpjf7" path="res://assets/sounds/button.mp3" id="5_hafo8"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="5_jhyhl"]
+[ext_resource type="Texture2D" uid="uid://css2vtlfvj3lh" path="res://assets/images/gui/check.png" id="6_8vtgv"]
+[ext_resource type="Texture2D" uid="uid://8o23gst8fkda" path="res://assets/images/gui/uncheck.png" id="7_48oj0"]
+[ext_resource type="AudioStream" uid="uid://djnwc6hilhbuu" path="res://assets/sounds/MainMenu.mp3" id="8_qi52m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd1kp"]
+font = ExtResource("2_l4m80")
+font_size = 120
+font_color = Color(0.752941, 0.164706, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0.811765, 0, 1)
+shadow_size = 21
+shadow_color = Color(0, 0, 0, 0.278431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3qy8p"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0udvy"]
+button_index = 14
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_vro8u"]
+events = [SubResource("InputEventJoypadButton_0udvy")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ees7b"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_jccmc"]
+button_index = 13
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_o740j"]
+events = [SubResource("InputEventJoypadButton_jccmc")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ux7ua"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_xiw35"]
+button_index = 2
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_cr34g"]
+events = [SubResource("InputEventJoypadButton_xiw35")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hxed"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_p75nw"]
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_tgr8j"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_0k3cs"]
+events = [SubResource("InputEventJoypadButton_p75nw"), SubResource("InputEventKey_tgr8j")]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gka58"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_ngmpd"]
+button_index = 4
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_exq82"]
+events = [SubResource("InputEventJoypadButton_ngmpd")]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yrpeb"]
+color = Color(0, 0.741176, 1, 1)
+grow_begin = -15.0
+grow_end = 0.0
+thickness = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6wdx"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0ugfj"]
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_4pac1"]
+events = [SubResource("InputEventJoypadButton_0ugfj")]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0n5st")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0588235, 0.34902, 0.498039, 0.929412)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -60.0
+offset_right = 1148.0
+offset_bottom = 964.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_18v5g")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 198.0
+offset_top = 104.0
+offset_right = 916.0
+offset_bottom = 239.0
+grow_horizontal = 2
+theme = ExtResource("2_wbm45")
+text = "Veil of Darkness"
+label_settings = SubResource("LabelSettings_dd1kp")
+
+[node name="Iniciar" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 288.0
+offset_top = 328.0
+offset_right = 629.0
+offset_bottom = 449.0
+theme = ExtResource("2_wbm45")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.976471, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.811765, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.882353, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_jhyhl")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3qy8p")
+shortcut = SubResource("Shortcut_vro8u")
+shortcut_in_tooltip = false
+text = "Niveles"
+flat = true
+
+[node name="Arcade" type="Button" parent="."]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 328.0
+offset_right = 893.0
+offset_bottom = 449.0
+theme = ExtResource("2_wbm45")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.976471, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.811765, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0.882353, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_jhyhl")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3qy8p")
+shortcut = SubResource("Shortcut_vro8u")
+shortcut_in_tooltip = false
+text = "Arcade"
+flat = true
+
+[node name="Niveles" type="Button" parent="."]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 350.0
+offset_right = 565.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_jhyhl")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ees7b")
+shortcut = SubResource("Shortcut_o740j")
+shortcut_in_tooltip = false
+text = "NIVELES"
+flat = true
+
+[node name="Tutorial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 488.0
+offset_right = 536.0
+offset_bottom = 592.0
+theme = ExtResource("2_wbm45")
+theme_override_colors/font_color = Color(0.184314, 0.905882, 0.729412, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ux7ua")
+shortcut = SubResource("Shortcut_cr34g")
+shortcut_in_tooltip = false
+text = "Tutorial
+"
+flat = true
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 488.0
+offset_right = 920.0
+offset_bottom = 592.0
+theme = ExtResource("2_wbm45")
+theme_override_colors/font_color = Color(0.184314, 0.905882, 0.729412, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3hxed")
+shortcut = SubResource("Shortcut_0k3cs")
+shortcut_in_tooltip = false
+text = "Salir
+"
+flat = true
+
+[node name="buttonsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hafo8")
+volume_db = 1.246
+
+[node name="CheckScreen" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 424.0
+offset_right = 215.0
+offset_bottom = 471.0
+theme_override_colors/font_color = Color(0.419608, 0.952941, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.690196, 0.815686, 0, 1)
+theme_override_colors/font_hover_color = Color(0.733333, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.654902, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.784314, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.643137, 0.886275, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_icons/checked = ExtResource("6_8vtgv")
+theme_override_icons/unchecked = ExtResource("7_48oj0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gka58")
+shortcut = SubResource("Shortcut_exq82")
+shortcut_in_tooltip = false
+text = "Full Screen"
+
+[node name="MusicOnOF" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 488.0
+offset_right = 215.0
+offset_bottom = 535.0
+theme_override_colors/font_color = Color(0.419608, 0.952941, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.690196, 0.815686, 0, 1)
+theme_override_colors/font_hover_color = Color(0.733333, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.654902, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.784314, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.643137, 0.886275, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_icons/checked = ExtResource("6_8vtgv")
+theme_override_icons/unchecked = ExtResource("7_48oj0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gka58")
+button_pressed = true
+shortcut = SubResource("Shortcut_exq82")
+shortcut_in_tooltip = false
+text = "Music On"
+
+[node name="mainMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qi52m")
+volume_db = 3.0
+
+[node name="Volume" type="HSlider" parent="."]
+modulate = Color(0.160784, 1, 0.243137, 1)
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 440.0
+offset_right = 1106.0
+offset_bottom = 456.0
+scale = Vector2(1.3, 1.3)
+theme_override_styles/slider = SubResource("StyleBoxLine_yrpeb")
+
+[node name="VolumeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1034.0
+offset_top = 408.0
+offset_right = 1137.0
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(0, 0.870588, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Volume"
+
+[node name="Creditos" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1009.0
+offset_top = 578.0
+offset_right = 1121.0
+offset_bottom = 622.0
+theme_override_colors/font_color = Color(0, 0.831373, 1, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f6wdx")
+shortcut = SubResource("Shortcut_4pac1")
+shortcut_in_tooltip = false
+text = "Créditos"
+flat = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 264.0
+offset_right = 738.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(0.678431, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_l4m80")
+theme_override_font_sizes/font_size = 60
+text = "Modo de juego"
+
+[connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="Arcade" to="." method="_on_arcade_pressed"]
+[connection signal="pressed" from="Niveles" to="." method="_on_niveles_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]
+[connection signal="toggled" from="CheckScreen" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="MusicOnOF" to="." method="_on_music_on_of_toggled"]
+[connection signal="value_changed" from="Volume" to="." method="_on_volume_value_changed"]
+[connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]

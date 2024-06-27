@@ -1,0 +1,245 @@
+[gd_scene load_steps=25 format=3 uid="uid://b0g8k7hvkgks"]
+
+[ext_resource type="Texture2D" uid="uid://cu0xld400ds2v" path="res://assets/images/intro/imageintro3.jpeg" id="1_3rn06"]
+[ext_resource type="Script" path="res://assets/scripts/intro.gd" id="1_m0a8y"]
+[ext_resource type="Script" path="res://assets/scripts/textIntrowrite.gd" id="2_bn3mm"]
+[ext_resource type="FontFile" uid="uid://rw0pl4jdelta" path="res://assets/images/gui/Gotham.ttf" id="2_m36ev"]
+[ext_resource type="FontFile" uid="uid://br01tedh83aax" path="res://assets/images/gui/Epistle-Regular.ttf" id="2_ynlly"]
+[ext_resource type="Texture2D" uid="uid://cojpvxsy1unr4" path="res://assets/images/intro/imageintro2.jpeg" id="3_x74mx"]
+[ext_resource type="Texture2D" uid="uid://dgjrchtbfl17m" path="res://assets/images/intro/imageintro1.jpeg" id="4_0j42k"]
+[ext_resource type="AudioStream" uid="uid://dl80q65yxk775" path="res://assets/sounds/BGCutSceneIntro.mp3" id="7_3nou1"]
+[ext_resource type="AudioStream" uid="uid://off820rqo61" path="res://assets/sounds/introvoice1_reverb.ogg" id="9_hjv4r"]
+[ext_resource type="AudioStream" uid="uid://e4seoqi6nc5r" path="res://assets/sounds/introvoice2_reverb.ogg" id="10_d77ur"]
+[ext_resource type="AudioStream" uid="uid://cxbt6cin5rggv" path="res://assets/sounds/introFinalSound.ogg" id="11_xd21n"]
+
+[sub_resource type="Animation" id="Animation_h3lli"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jerbq"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.219608), Color(1, 1, 1, 0.427451), Color(1, 1, 1, 0.603922), Color(1, 1, 1, 0.741176), Color(1, 1, 1, 0.866667), Color(1, 1, 1, 0.952941), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hce5b"]
+_data = {
+"RESET": SubResource("Animation_h3lli"),
+"show": SubResource("Animation_jerbq")
+}
+
+[sub_resource type="Animation" id="Animation_giqd2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a3uxq"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.113725), Color(1, 1, 1, 0.184314), Color(1, 1, 1, 0.321569), Color(1, 1, 1, 0.45098), Color(1, 1, 1, 0.556863), Color(1, 1, 1, 0.686275), Color(1, 1, 1, 0.796078), Color(1, 1, 1, 0.917647), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o21kn"]
+_data = {
+"RESET": SubResource("Animation_giqd2"),
+"show": SubResource("Animation_a3uxq")
+}
+
+[sub_resource type="Animation" id="Animation_knedn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 600)]
+}
+
+[sub_resource type="Animation" id="Animation_jfcgs"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 600), Vector2(128, 500), Vector2(128, 300), Vector2(128, 200), Vector2(128, 100), Vector2(128, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7ljg"]
+_data = {
+"RESET": SubResource("Animation_knedn"),
+"show": SubResource("Animation_jfcgs")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mfrou"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_jtul5"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0ltwi"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_edfvp"]
+events = [SubResource("InputEventKey_jtul5"), SubResource("InputEventJoypadButton_0ltwi")]
+
+[node name="intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m0a8y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -24.0
+offset_right = 1160.0
+offset_bottom = 664.0
+color = Color(0.0313726, 0.0313726, 0.0313726, 0.882353)
+
+[node name="sceneSprite1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(64, 88)
+scale = Vector2(0.445312, 0.414062)
+texture = ExtResource("1_3rn06")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sceneSprite1"]
+libraries = {
+"": SubResource("AnimationLibrary_hce5b")
+}
+
+[node name="sceneSprite2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(64, 88)
+scale = Vector2(0.445312, 0.414062)
+texture = ExtResource("3_x74mx")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sceneSprite2"]
+libraries = {
+"": SubResource("AnimationLibrary_o21kn")
+}
+
+[node name="sceneSprite3" type="Sprite2D" parent="."]
+position = Vector2(128, 600)
+scale = Vector2(0.859375, 0.601563)
+texture = ExtResource("4_0j42k")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sceneSprite3"]
+libraries = {
+"": SubResource("AnimationLibrary_o7ljg")
+}
+
+[node name="sceneText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 111.0
+offset_right = 1112.0
+offset_bottom = 519.0
+theme_override_fonts/normal_font = ExtResource("2_ynlly")
+theme_override_font_sizes/normal_font_size = 24
+script = ExtResource("2_bn3mm")
+
+[node name="Change" type="Button" parent="."]
+layout_mode = 0
+offset_left = 976.0
+offset_top = 557.0
+offset_right = 1076.0
+offset_bottom = 597.0
+theme_override_colors/font_color = Color(0, 0.898039, 1, 1)
+theme_override_fonts/font = ExtResource("2_m36ev")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mfrou")
+shortcut = SubResource("Shortcut_edfvp")
+shortcut_in_tooltip = false
+text = "Saltar"
+flat = true
+
+[node name="BG" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_3nou1")
+volume_db = -12.2
+autoplay = true
+
+[node name="visibleBtn" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="Labelbtn" type="Label" parent="."]
+layout_mode = 0
+offset_left = 951.0
+offset_top = 593.0
+offset_right = 1106.0
+offset_bottom = 621.0
+theme_override_font_sizes/font_size = 20
+text = "(Espacio o Start)"
+
+[node name="introvoice1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_hjv4r")
+volume_db = 6.8
+
+[node name="introvoice2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_d77ur")
+volume_db = 6.6
+
+[node name="finalsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_xd21n")
+volume_db = 7.0
+
+[connection signal="pressed" from="Change" to="." method="_on_change_pressed"]
+[connection signal="timeout" from="visibleBtn" to="." method="_on_visible_btn_timeout"]
